@@ -1,0 +1,186 @@
+.quiz__item {
+    display: none;
+}
+.quiz__item--current {
+     display: block;
+}
+.quiz {
+    min-height: calc(100vh - 64px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.quiz__inner-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+.quiz__title {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: #919191;
+    margin: 24px;
+    text-align: center;
+}
+.quiz__content {
+    display: flex;
+    justify-content: center;
+}
+
+/*List of question indexes*/
+.quiz__list {
+    margin-right: 32px;
+}
+.list__content {
+    display: inline-block;
+    text-align: left;
+}
+.list__button {
+    background: #E4E4E4;
+    border: 1px solid #CFCFCF;
+    border-radius: 4px;
+    width: 24px;
+    height: 24px;
+    margin-right: 4px;
+    font-size: 12px;
+    text-align: center;
+    color: #858585;
+    margin-bottom: 4px;
+}
+.list__button--last {
+    margin-right: 0;
+}
+.list__button--current {
+    background: #007AFF;
+    color: #fff;
+}
+.list__button--answered {
+    background: #E9F3FF;
+}
+.list__button--favorite {
+    background: #FFDC62;
+}
+.list__title {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    color: #919191;
+    text-align: left;
+}
+
+
+.quiz__result {
+    max-width: 455px;
+    margin: 72px auto 0 auto;
+}
+
+.quiz__card {
+    min-width: 455px;
+    width: 455px;
+}
+.quiz__countdown-timer {
+    min-width: 140px;
+    margin-left: 32px;
+}
+
+/*Quiz bottom*/
+.quiz__end {
+    margin-top: 30px;
+    background: #fff;
+    padding: 10px 0;
+}
+.end__content {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: flex;
+}
+.end__button {
+    margin-left: auto;
+    margin-right: 0;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+    padding: 10px 35px;
+    background: #74D57E;
+    border: 1px solid #41A04B;
+    border-radius: 8px;
+}
+
+.on-top {
+    z-index: 998;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: none;
+    position: absolute;
+    background: rgba(158, 158, 158, 0.6);
+    backdrop-filter: blur(10px);
+}
+.on-top--block {
+    display: block !important;
+}
+.modal-form {
+    width: 455px;
+    height: 160px;
+    position: absolute;
+    color: #000000;
+    top: 50%;
+    left: 50%;
+    margin-top: -80px;
+    margin-left: -227px;
+    background: #fff;
+    border: 1px solid #ececec;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 24px 16px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.modal-form__title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+    text-align: center;
+}
+.modal-form__button-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+.modal-form__button-wrapper--center {
+    text-align: center;
+}
+.modal-form__button {
+    background: transparent;
+    border: none;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+}
+.modal-form__button--width-50 {
+    width: 50%;
+}
+.modal-form__button--black {
+    color: #000;
+}
+.modal-form__button--blue {
+    color: #007AFF;
+}
+.result__end-button-wrapper {
+    margin-top: 124px;
+    background: transparent;
+    text-align: center;
+}
+.result__end-button {
+    padding: 10px 34px;
+    font-size: 16px;
+    line-height: 24px;
+    color: #fff;
+    background: #74D57E;
+    border: 1px solid #41A04B;
+    border-radius: 8px;
+    text-decoration: none;
+}

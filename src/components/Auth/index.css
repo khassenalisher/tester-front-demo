@@ -1,0 +1,76 @@
+.auth {
+    height: calc(100vh - 64px);
+    position: relative;
+}
+.auth__form {
+    width: 455px;
+    height: 442px;
+    background: white;
+    padding: 26px 24px 40px 24px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0; right: 0;
+    top: 50%;
+    transform: translateY(-60%);
+    margin: auto;
+}
+.auth__title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+    margin-bottom: 24px;
+    text-align: center;
+}
+.auth__input {
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 16px;
+    line-height: 24px;
+}
+.auth__username-block {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 22px;
+}
+.username__label {
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 4px;
+}
+.auth__password-block {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 48px;
+}
+.password__label {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 4px;
+}
+.auth__button-enter {
+    background: #007AFF;
+    border-radius: 8px;
+    color: #FFFFFF;
+    width: 100%;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 24px;
+    padding: 13px 0;
+}
+.auth__button-help-wrapper {
+    text-align: center;
+}
+.auth__button-help {
+    font-size: 16px;
+    line-height: 24px;
+    color: #007AFF;
+    background: transparent;
+    text-align: center;
+    border: none;
+}

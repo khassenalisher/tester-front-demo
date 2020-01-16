@@ -1,0 +1,32 @@
+.new-test-card {
+    background: #fff;
+    padding: 16px 24px 18px 24px;
+    width: 360px;
+    box-sizing: border-box;
+}
+.new-test-card__title {
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 40px;
+}
+.new-test-card__block {
+    display: flex;
+    justify-content: space-between;
+}
+.new-test-card__create-date {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 24px;
+    color: #919191;
+}
+.new-test-card__link {
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 24px;
+    color: #007AFF;
+}
+.new-test-card__arrow {
+    vertical-align: middle;
+    margin-left: 6px;
+}

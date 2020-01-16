@@ -1,0 +1,44 @@
+.passed-test-card {
+    background: #fff;
+    padding: 0 24px;
+    display: flex;
+}
+.passed-test-card__result {
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 41px;
+    color: #41A04B;
+    width: 10%;
+    padding: 20px 0;
+    text-align: left;
+}
+.passed-test-card__content {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    padding: 16px 0;
+}
+.passed-test-card__title {
+    font-size: 16px;
+    line-height: 24px;
+}
+.passed-test-card__date {
+    font-size: 16px;
+    line-height: 24px;
+    color: #B8B8B8;
+}
+.passed-test-card__link-wrapper {
+    display: table;
+    height: 100%;
+}
+.passed-test-card__link {
+    text-decoration: none;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    color: #007AFF;
+}
+.passed-test-card__arrow {
+    vertical-align: middle;
+    margin-left: 6px;
+}

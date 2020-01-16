@@ -1,0 +1,32 @@
+.dashboard {
+    max-width: 1120px;
+    margin: 0 auto;
+}
+.dashboard {
+
+}
+.dashboard__new-test-cards {
+    margin-top: 64px;
+}
+.new-test-cards__block {
+    display: flex;
+    justify-content: space-between;
+}
+.new-test-cards__title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+    margin-bottom: 24px;
+}
+.new-test-cards__item {
+    width: 32%;
+}
+.dashboard_passed-test-cards {
+    margin-top: 56px;
+}
+.passed-test-cards__title {
+    margin-bottom: 24px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+}

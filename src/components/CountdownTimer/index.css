@@ -1,0 +1,14 @@
+.countdown-timer__title {
+    font-size: 14px;
+    line-height: 24px;
+    color: #919191;
+    font-weight: normal;
+    text-align: left;
+}
+.countdown-timer__text {
+    text-align: left;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 28px;
+    color: #000000;
+}

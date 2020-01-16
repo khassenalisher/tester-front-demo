@@ -1,0 +1,61 @@
+.result-card {
+    padding: 24px;
+    background: #fff;
+    min-height: 400px;
+}
+.result-card__title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+    margin-bottom: 24px;
+    text-align: left;
+}
+.result-card__content {
+    padding: 0 16px;
+    text-align: left;
+}
+.result-card__block {
+    display: flex;
+    justify-content: space-between;
+}
+.result-card__block--result {
+    display: block;
+    margin-bottom: 42px;
+}
+.result-card__block--time {
+    margin-bottom: 24px;
+}
+.result-card__text {
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+    text-align: left;
+    width: 50%;
+}
+.result-card__right-answers {
+    font-weight: 600;
+    font-size: 42px;
+    line-height: 51px;
+    color: #41A04B;
+    width: 50%;
+}
+.result-card__total-questions {
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #B8B8B8;
+}
+.result-card__status {
+    text-align: left;
+    width: 50%;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 50px;
+    color: #41A04B;
+}
+.result-card__data {
+    line-height: 26px;
+    text-align: left;
+    width: 50%;
+}
+
