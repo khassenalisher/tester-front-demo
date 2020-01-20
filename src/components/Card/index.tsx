@@ -6,7 +6,7 @@ import ArrowImage from '../../static/img/arrow-image.svg';
 import { CardTypes } from './types';
 import { IQuizItemResult, IResult } from '../../types';
 import './index.css';
-import FavouriteImage from '../../static/img/favourite-img.svg';
+import FavouriteImage from '../../static/img/favourite-img';
 
 class Card extends React.Component<CardTypes.IProps, CardTypes.IState> {
   constructor(props: CardTypes.IProps) {
@@ -15,13 +15,14 @@ class Card extends React.Component<CardTypes.IProps, CardTypes.IState> {
       result: {
         id: this.props.id,
         question: this.props.question,
-        answersWithResult: []
+        answersWithResult: [...this.props.answers]
       },
     };
     this.onCheckboxChange = this.onCheckboxChange.bind(this);
   }
   componentDidMount() {
     const data:IResult[] = [];
+    console.log('this.props.answers', this.props.answers);
     this.props.answers.map(item => {
       data.push({
         status: item.status,
@@ -39,6 +40,29 @@ class Card extends React.Component<CardTypes.IProps, CardTypes.IState> {
     this.setState({result});
   }
 
+  componentDidUpdate(prevProps: any) {
+    if(prevProps.answers !== this.props.answers) {
+      // const data:IResult[] = [];
+      // this.props.answers.map(item => {
+      //   data.push({
+      //     status: item.status,
+      //     data: item.data,
+      //     checked: false,
+      //   })
+      // });
+      //
+      if(this.props.results) {
+
+        const result:IQuizItemResult | null = {
+          id: this.props.id,
+          question: this.props.question,
+          answersWithResult: [...this.props.answers],
+          isAnswered: false,
+        }
+        if(result ) this.setState({result });
+      }
+    }
+  }
   onCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { result } = this.state;
     const { results } = this.props || [];
@@ -68,10 +92,11 @@ class Card extends React.Component<CardTypes.IProps, CardTypes.IState> {
     this.props.changeResult && this.props.changeResult(result);
   };
 
+  componentWillUnmount() {
+  }
   render(): React.ReactElement {
-    const { question, id, isTheLast, isTheFirst } = this.props;
+    const { question, id, isTheLast, isTheFirst, answers } = this.props;
     const { result } = this.state;
-    console.log(this.props.results);
     return (
       <div className="card">
         <div className="card__content">
@@ -82,10 +107,7 @@ class Card extends React.Component<CardTypes.IProps, CardTypes.IState> {
                 className="card__favorites-button"
                 onClick={() => this.onFavoriteButtonHandle()}
               >
-                <img
-                  alt="favorite"
-                  src={FavouriteImage}
-                />
+                <FavouriteImage isFavourite={result.isFavorite || false}/>
               </button>
             </div>
           </div>

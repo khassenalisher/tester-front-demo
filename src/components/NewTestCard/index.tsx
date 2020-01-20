@@ -13,7 +13,7 @@ function NewTestCard(props: NewTestCardTypes.IProps) {
         <div>
           <Link
             className="new-test-card__link"
-            to={`/test/${props.id}`}
+            to={`/tester-front-demo/test/${props.id}`}
           >
             Пройти тестирование
             <img alt='arrow' className="new-test-card__arrow" src={ArrowImage} />

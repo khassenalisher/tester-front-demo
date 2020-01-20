@@ -37,6 +37,7 @@
     text-align: left;
 }
 .list__button {
+    padding: 0;
     background: #E4E4E4;
     border: 1px solid #CFCFCF;
     border-radius: 4px;
@@ -119,17 +120,21 @@
     backdrop-filter: blur(10px);
 }
 .on-top--block {
+    position: fixed;
+    overflow-y: hidden;
     display: block !important;
+}
+.modal-form__wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .modal-form {
     width: 455px;
     height: 160px;
-    position: absolute;
     color: #000000;
-    top: 50%;
-    left: 50%;
-    margin-top: -80px;
-    margin-left: -227px;
     background: #fff;
     border: 1px solid #ececec;
     box-sizing: border-box;
@@ -170,7 +175,7 @@
     color: #007AFF;
 }
 .result__end-button-wrapper {
-    margin-top: 124px;
+    margin-top: 100px;
     background: transparent;
     text-align: center;
 }
@@ -183,4 +188,76 @@
     border: 1px solid #41A04B;
     border-radius: 8px;
     text-decoration: none;
+}
+
+@media only screen and (max-width: 850px) {
+    .quiz__inner-container {
+        padding: 0 20px;
+    }
+    .quiz__content {
+        flex-direction: column-reverse;
+    }
+    .quiz__card {
+        margin: 0 auto;
+    }
+    .quiz__countdown-timer {
+        text-align: center;
+        width: 200px;
+        margin: 0 auto 20px;
+    }
+    .countdown-timer__title {
+        text-align: center;
+    }
+    .countdown-timer__text {
+        text-align: center;
+    }
+    .quiz__list {
+        margin: 30px 0 0;
+        text-align: center;
+    }
+    .list__title {
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    .list__content {
+        flex-wrap: wrap;
+        width: 581px;
+        margin: 0 auto;
+    }
+    .end__button {
+        margin-right: auto;
+    }
+    .list__button--last {
+        margin-right: 5px;
+    }
+    .list__button {
+        margin-right: 2.5px;
+        margin-left: 2.5px;
+    }
+    .result__end-button-wrapper {
+        margin-bottom: 60px;
+    }
+}
+@media only screen and (max-width: 650px) {
+    .list__content {
+        width: 435px;
+    }
+}
+@media only screen and (max-width: 550px) {
+    .quiz {
+        min-height: calc(100vh - 128px);
+    }
+    .quiz__card {
+        width: 100%;
+        min-width: 100%;
+    }
+    .modal-form {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .list__content {
+        width: 293px;
+    }
 }

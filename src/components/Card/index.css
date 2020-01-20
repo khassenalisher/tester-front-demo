@@ -7,7 +7,6 @@
     border: 1px solid #ECECEC;
     padding: 24px 0;
 }
-
 .card__head-wrapper {
     display: flex;
     justify-content: space-between;
@@ -120,10 +119,6 @@
     transform: translateY(-50%);
     border: solid 1px #007AFF;;
     border-radius: 50%;
-}
-
-.container:hover input ~ .checkmark {
-    /*background-color: #ccc;*/
 }
 
 .container input:checked ~ .checkmark {

@@ -33,6 +33,7 @@ export namespace QuizTypes {
     isTestFinished: boolean;
     isEndButtonPressed: boolean;
     cntAllAnsweredQuestions: number;
+    windowWidth: number;
   }
 }
 

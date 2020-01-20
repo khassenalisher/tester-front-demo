@@ -26,12 +26,18 @@ class Quiz extends React.Component<QuizTypes.IProps, QuizTypes.IState> {
       isTestFinishedButtonPressed: false,
       isEndButtonPressed: false,
       cntAllAnsweredQuestions: 0,
-    }
+      windowWidth: 0,
+    };
+    window.addEventListener('resize', this.updateWindowWidth);
   }
   handleChildNextButtonClick = (direction: string) => {
     const { stepper } = this.state;
     if(direction === 'next') this.setState({stepper: stepper + 1});
     else this.setState({stepper: stepper - 1});
+  };
+
+  updateWindowWidth = () => {
+    this.setState({windowWidth: window.innerWidth})
   };
 
   handleTimerEnding = () => {
@@ -76,6 +82,7 @@ class Quiz extends React.Component<QuizTypes.IProps, QuizTypes.IState> {
   }
   onFinishButtonClick() {
     if(!this.props.newResults) return;
+    console.log('this.props.newResults i am here', this.props.newResults);
     const { newResults } = this.props;
     this.setState({isTestFinishedButtonPressed: true});
     this.countRightAnswers(newResults, () => {
@@ -86,16 +93,17 @@ class Quiz extends React.Component<QuizTypes.IProps, QuizTypes.IState> {
     this.setState({isTestFinishedButtonPressed: false})
   }
   componentDidMount(): void {
-    console.log(this.props.location.pathname.split('/'));
-    // console.log('only once');
-    const id = this.props.location.pathname.split('/')[2];
+    this.updateWindowWidth();
+    const id = this.props.location.pathname.split('/')[3];
     const test = tests.find(element => element.id.toString() === id);
-    const list = test && test.questionsWithAnswers;
+    console.log('testmotherfucker', test);
+    const list = test && test.questionsWithAnswers.sort( () => Math.random() - 0.5);
+    console.log('aloha dance', list);
     let results: IQuizItemResult[] = [];
     if(list) this.setState({list},() => {
       this.state.list.map((item, index) => {
         const data:IResult[] = [];
-        item.answers.map(item => {
+        item.answers.forEach(item => {
           data.push({
             status: item.status,
             data: item.data,
@@ -103,7 +111,7 @@ class Quiz extends React.Component<QuizTypes.IProps, QuizTypes.IState> {
           })
         });
         const newObject = {
-          id: index,
+          id: item.id,
           question: item.question,
           answersWithResult: [...data],
           isAnswered: false,
@@ -111,18 +119,27 @@ class Quiz extends React.Component<QuizTypes.IProps, QuizTypes.IState> {
         };
         results.push(newObject);
       })
+      console.log('results', results);
       this.props.setResults && this.props.setResults(results);
     });
   }
 
   render():React.ReactElement {
-    const { list } = this.state;
-    const { stepper, isTimeEnd, rightAnswers } = this.state;
+    const { stepper, isTimeEnd, rightAnswers, windowWidth } = this.state;
     const { length } = this.state.list;
+    const showResult = (this.state.isAnsweredAllQuestions && this.state.isTestFinishedButtonPressed) || this.state.isEndButtonPressed;
+    if((isTimeEnd || (!this.state.isAnsweredAllQuestions && this.state.isTestFinishedButtonPressed))) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    if(showResult) {
+      document.body.style.overflow = 'unset';
+    }
     console.log('bachate', this.props);
     return (
-      <div className="quiz">
-        {(this.state.isAnsweredAllQuestions && this.state.isTestFinishedButtonPressed) || this.state.isEndButtonPressed ? (
+      <div className={`quiz`}>
+        {showResult ? (
           <div className="quiz__result">
             <ResultCard
               title="Тема теста, например “Ежемесячное тестирование юр. отдела 2019/2020”?"
@@ -135,12 +152,13 @@ class Quiz extends React.Component<QuizTypes.IProps, QuizTypes.IState> {
             <div
               className="result__end-button-wrapper"
             >
-              <Link className="result__end-button" to={'/'}>Вернуться на главную</Link>
+              <Link className="result__end-button" to={'/tester-front-demo/'}>Вернуться на главную</Link>
             </div>
           </div> ) : (
           <>
             <div className={`on-top ${(isTimeEnd || (!this.state.isAnsweredAllQuestions && this.state.isTestFinishedButtonPressed)) && 'on-top--block'}`}>
-              <div className="modal-form">
+              <div className="modal-form__wrapper">
+                <div className="modal-form">
                 {this.state.isTimeEnd ? (
                   <>
                     <h3 className="modal-form__title">Время на сдачу теста истекло.
@@ -148,7 +166,11 @@ class Quiz extends React.Component<QuizTypes.IProps, QuizTypes.IState> {
                     <div className="modal-form__button-wrapper--center" >
                       <button
                         className="modal-form__button modal-form__button--blue"
-                        onClick={() => this.setState({isEndButtonPressed: true})}
+                        onClick={() => {
+                          this.setState({isEndButtonPressed: true});
+                          document.body.style.overflow = 'unset';
+                        }}
+
                       >
                         Выйти
                       </button>
@@ -160,19 +182,25 @@ class Quiz extends React.Component<QuizTypes.IProps, QuizTypes.IState> {
                     <div className="modal-form__button-wrapper">
                       <button
                         className="modal-form__button modal-form__button--black modal-form__button--width-50"
-                        onClick={() => this.onCancelButtonPressed()}
+                        onClick={() => {
+                          document.body.style.overflow = 'unset';
+                          this.onCancelButtonPressed();}}
                       >
                         Отменить
                       </button>
                       <button
                         className="modal-form__button modal-form__button--blue modal-form__button--width-50"
-                        onClick={() => this.setState({isEndButtonPressed: true})}
+                        onClick={() => {
+                          document.body.style.overflow = 'unset';
+                          this.setState({isEndButtonPressed: true})
+                        }}
                       >
                         Закончить тест
                       </button>
                     </div>
                   </>
                 )}
+              </div>
               </div>
             </div>
             <div className="quiz__inner-container">
@@ -187,25 +215,26 @@ class Quiz extends React.Component<QuizTypes.IProps, QuizTypes.IState> {
                           <button
                             className={`
                               list__button ${(index+1) % 5 === 0 && 'list__button--last'}
-                              ${stepper === index ? 'list__button--current' : item.isAnswered ? 'list__button--answered'
-                              : item.isFavorite ? 'list__button--favorite' : '' }
+                              ${stepper === index ? 'list__button--current' : item.isFavorite ? 'list__button--favorite'
+                              : item.isAnswered ? 'list__button--answered' : '' }
                             `}
                             onClick={() => this.onIndexQuestionClick(index)}
                           >
                             {index+1}
                           </button>
-                          {(index+1) % 5 === 0 && <br/>}
+                          {(windowWidth > 850) && ((index+1) % 5 === 0) && <br/>}
                         </>
                       ))}
                     </div>
                   </div>
                   <div className="quiz__card">
+                    {console.log('suka blyat', this.props.newResults)}
                     {stepper < length  && this.props.newResults && this.props.newResults.map((item, i) =>
                       <div key={i} className={`quiz__item ${i === stepper ? 'quiz__item--current' : ''}`}>
                         <Card
                           id={item.id}
                           question={item.question}
-                          answers={item.answersWithResult}
+                          answers={[...item.answersWithResult]}
                           onCardNextButtonClick={this.handleChildNextButtonClick}
                           isTheLast={i === length - 1}
                           isTheFirst={i === 0}

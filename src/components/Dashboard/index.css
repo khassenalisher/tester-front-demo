@@ -22,11 +22,33 @@
     width: 32%;
 }
 .dashboard_passed-test-cards {
-    margin-top: 56px;
+    margin: 55px 0;
 }
 .passed-test-cards__title {
     margin-bottom: 24px;
     font-weight: 600;
     font-size: 18px;
     line-height: 28px;
+}
+
+@media only screen and (max-width: 1120px)  {
+    .dashboard {
+        padding: 0 20px;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .new-test-cards__block {
+        flex-wrap: wrap;
+    }
+    .new-test-cards__item {
+        width: 49%;
+        margin-bottom: 20px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .new-test-cards__item {
+        width: 100%;
+    }
 }

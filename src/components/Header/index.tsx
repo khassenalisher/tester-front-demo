@@ -20,7 +20,7 @@ function Header(props: HeaderTypes.IProps) {
         {props.isUserAuth && (
           <div className="header__user-data">
             <h3 className="user-data__name">Кожатаев Б.Б.</h3>
-            <p className="user-data__iin">ИИН: 941223123123</p>
+            <p className="user-data__iin">ИИН: 888888888888</p>
           </div>
         )}
       </div>

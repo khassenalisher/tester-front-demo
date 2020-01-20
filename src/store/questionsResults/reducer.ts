@@ -4,9 +4,11 @@ import { CHANGE_RESULT, RESULTS, SET_TIME } from './types';
 
 const results = (state = [], action: any): IQuizItemResult[] | null => {
   if (action.type === RESULTS) {
+    console.log('action', action);
     return [...action.results];
   }
   if (action.type === CHANGE_RESULT) {
+    console.log('I am here', action);
       const a =  state.map((item:IQuizItemResult) => {
         if (item.id === action.result.id) {
             item.id = action.result.id;

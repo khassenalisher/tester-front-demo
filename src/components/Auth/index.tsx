@@ -3,6 +3,7 @@ import { AuthTypes} from './types';
 import './index.css';
 import { bindActionCreators } from 'redux';
 import userAuthActions from '../../store/auth/actions';
+import InputMask from 'react-input-mask';
 import { connect } from 'react-redux';
 
 class Auth extends React.Component<AuthTypes.IProps, AuthTypes.IState> {
@@ -23,8 +24,9 @@ class Auth extends React.Component<AuthTypes.IProps, AuthTypes.IState> {
 
   onSubmitButtonClick() {
     console.log('pressed');
-    if(this.state.username === 'user' && this.state.password === 'user') {
+    if(this.state.username === '888888888888' && this.state.password === 'password') {
       console.log('correct');
+      localStorage.setItem('user', 'theusertoken');
       this.props.setUserAuth && this.props.setUserAuth(true)
     }
   };
@@ -36,22 +38,14 @@ class Auth extends React.Component<AuthTypes.IProps, AuthTypes.IState> {
           <h3 className="auth__title">Авторизация</h3>
           <div className="auth__username-block">
             <label className="username__label" htmlFor="username">Логин</label>
-            <input
-              placeholder="ИИН"
-              className="auth__input"
-              type="text"
-              name="username"
-              id="username"
-              value={this.state.username}
-              onChange={this.onInputChange('username')}
-            />
+            <InputMask placeholder="ИНН" className="auth__input" mask="999999999999" maskChar={null} value={this.state.username} onChange={this.onInputChange('username')} />
           </div>
           <div className="auth__password-block">
             <label className="password__label" htmlFor="password">Пароль</label>
             <input
               placeholder='Пароль'
               className="auth__input"
-              type="text"
+              type="password"
               name="password"
               id="password"
               value={this.state.password}

@@ -11,17 +11,24 @@
     width: 10%;
     padding: 20px 0;
     text-align: left;
+    min-width: 100px;
 }
 .passed-test-card__content {
     display: flex;
     justify-content: space-between;
     width: 90%;
     padding: 16px 0;
+    border-bottom: 1px solid #E8E8E8;
+    flex-wrap: wrap;
 }
 .passed-test-card__title {
     font-size: 16px;
     line-height: 24px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
 }
+
 .passed-test-card__date {
     font-size: 16px;
     line-height: 24px;
@@ -29,7 +36,9 @@
 }
 .passed-test-card__link-wrapper {
     display: table;
-    height: 100%;
+    min-width: 225px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 .passed-test-card__link {
     text-decoration: none;
@@ -41,4 +50,13 @@
 .passed-test-card__arrow {
     vertical-align: middle;
     margin-left: 6px;
+}
+@media only screen and (max-width: 450px) {
+    .passed-test-card__link-wrapper {
+        min-width: 130px;
+        width: 130px;
+    }
+    .passed-test-card__link {
+        text-align: left;
+    }
 }
