@@ -9,6 +9,7 @@ export namespace CardTypes {
     onCardCheckboxChange?(cardResult: IQuizItemResult) : any;
     isTheLast?: boolean;
     isTheFirst?: boolean;
+    isFavorite: boolean;
     results?: IQuizItemResult[];
     setResults?(results: IQuizItemResult[]): any;
     changeResult?(result: IQuizItemResult): any;

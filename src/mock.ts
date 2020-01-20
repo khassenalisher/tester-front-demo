@@ -1227,6 +1227,7 @@ export const tests:ITest[] = [
     passedDate: undefined,
     resultInNumber: undefined,
     resultInPercent: undefined,
+    time: 500,
   },
   {
     id: 1,
@@ -1238,6 +1239,7 @@ export const tests:ITest[] = [
     passedDate: undefined,
     resultInNumber: undefined,
     resultInPercent: undefined,
+    time: 60,
   },
   {
     id: 2,
@@ -1249,6 +1251,7 @@ export const tests:ITest[] = [
     passedDate: undefined,
     resultInNumber: undefined,
     resultInPercent: undefined,
+    time: 20,
   }
 ];
 
@@ -1263,6 +1266,7 @@ export const tests2:ITest[] = [
     passedDate: '20/01/20',
     resultInNumber: 69,
     resultInPercent: 87,
+    time: 30,
   },
   {
     id: 1,
@@ -1274,6 +1278,7 @@ export const tests2:ITest[] = [
     passedDate: '11/10/19',
     resultInNumber: 48,
     resultInPercent: 89,
+    time: 50,
   },
   {
     id: 2,
@@ -1285,6 +1290,7 @@ export const tests2:ITest[] = [
     passedDate: '11/10/19',
     resultInNumber: 23,
     resultInPercent: 100,
+    time: 60,
   }
 ];
 

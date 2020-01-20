@@ -190,6 +190,11 @@
     text-decoration: none;
 }
 
+@media only screen and (max-width: 1120px) {
+    .end__content {
+        padding: 0 20px;
+    }
+}
 @media only screen and (max-width: 850px) {
     .quiz__inner-container {
         padding: 0 20px;
@@ -259,5 +264,11 @@
 @media only screen and (max-width: 500px) {
     .list__content {
         width: 293px;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .list__content {
+        width: 250px;
     }
 }

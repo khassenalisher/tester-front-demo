@@ -23,9 +23,7 @@ class Auth extends React.Component<AuthTypes.IProps, AuthTypes.IState> {
   )
 
   onSubmitButtonClick() {
-    console.log('pressed');
-    if(this.state.username === '888888888888' && this.state.password === 'password') {
-      console.log('correct');
+    if(this.state.username === '888888888888') {
       localStorage.setItem('user', 'theusertoken');
       this.props.setUserAuth && this.props.setUserAuth(true)
     }

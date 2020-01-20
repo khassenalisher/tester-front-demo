@@ -87,4 +87,7 @@
     .user-data__iin {
         text-align: center;
     }
+    .company-data__logo-wrapper {
+        margin-right: 10px;
+    }
 }

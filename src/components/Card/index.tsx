@@ -15,14 +15,14 @@ class Card extends React.Component<CardTypes.IProps, CardTypes.IState> {
       result: {
         id: this.props.id,
         question: this.props.question,
-        answersWithResult: [...this.props.answers]
+        answersWithResult: [...this.props.answers],
+        isFavorite: false
       },
     };
     this.onCheckboxChange = this.onCheckboxChange.bind(this);
   }
   componentDidMount() {
     const data:IResult[] = [];
-    console.log('this.props.answers', this.props.answers);
     this.props.answers.map(item => {
       data.push({
         status: item.status,
@@ -36,6 +36,7 @@ class Card extends React.Component<CardTypes.IProps, CardTypes.IState> {
       question: this.props.question,
       answersWithResult: [...data],
       isAnswered: false,
+      isFavorite: false,
     }
     this.setState({result});
   }
@@ -58,6 +59,7 @@ class Card extends React.Component<CardTypes.IProps, CardTypes.IState> {
           question: this.props.question,
           answersWithResult: [...this.props.answers],
           isAnswered: false,
+          isFavorite: this.props.isFavorite,
         }
         if(result ) this.setState({result });
       }
@@ -66,7 +68,6 @@ class Card extends React.Component<CardTypes.IProps, CardTypes.IState> {
   onCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { result } = this.state;
     const { results } = this.props || [];
-    console.log('what is result', result);
     let cntAllAnsweredQuestions = 0;
     result.answersWithResult.map(item => {
       if(item.data === event.target.name) {
@@ -88,7 +89,7 @@ class Card extends React.Component<CardTypes.IProps, CardTypes.IState> {
   onFavoriteButtonHandle = () => {
     const { result } = this.state;
     result.isFavorite = !result.isFavorite;
-    this.setState({result})
+    this.setState({result});
     this.props.changeResult && this.props.changeResult(result);
   };
 

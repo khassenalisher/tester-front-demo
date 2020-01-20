@@ -27,6 +27,7 @@ class Quiz extends React.Component<QuizTypes.IProps, QuizTypes.IState> {
       isEndButtonPressed: false,
       cntAllAnsweredQuestions: 0,
       windowWidth: 0,
+      time: 60,
     };
     window.addEventListener('resize', this.updateWindowWidth);
   }
@@ -40,6 +41,12 @@ class Quiz extends React.Component<QuizTypes.IProps, QuizTypes.IState> {
     this.setState({windowWidth: window.innerWidth})
   };
 
+  getTime = ():number => {
+    const id = this.props.location.pathname.split('/')[3];
+    const test = tests.find(element => element.id.toString() === id);
+    if(test && test.time) return test.time;
+    return 60;
+  };
   handleTimerEnding = () => {
     if(this.state.isTestFinished) return;
     this.setState({isTimeEnd: true}, () => {
@@ -53,7 +60,6 @@ class Quiz extends React.Component<QuizTypes.IProps, QuizTypes.IState> {
 
     let rightAnswers = 0;
     let cntAllAnsweredQuestions = 0;
-    console.log('res', results);
     for(let i = 0; i < length; i++) {
       const answersWithResult = results[i].answersWithResult;
       const answersLength = answersWithResult.length;
@@ -69,7 +75,6 @@ class Quiz extends React.Component<QuizTypes.IProps, QuizTypes.IState> {
       }
       if(cnt ===  answersLength) rightAnswers++;
     }
-    console.log('cntAllAnsweredQuestions', cntAllAnsweredQuestions);
     this.setState({
       isAnsweredAllQuestions: cntAllAnsweredQuestions === this.state.list.length,
       rightAnswers,
@@ -82,7 +87,6 @@ class Quiz extends React.Component<QuizTypes.IProps, QuizTypes.IState> {
   }
   onFinishButtonClick() {
     if(!this.props.newResults) return;
-    console.log('this.props.newResults i am here', this.props.newResults);
     const { newResults } = this.props;
     this.setState({isTestFinishedButtonPressed: true});
     this.countRightAnswers(newResults, () => {
@@ -96,9 +100,9 @@ class Quiz extends React.Component<QuizTypes.IProps, QuizTypes.IState> {
     this.updateWindowWidth();
     const id = this.props.location.pathname.split('/')[3];
     const test = tests.find(element => element.id.toString() === id);
-    console.log('testmotherfucker', test);
     const list = test && test.questionsWithAnswers.sort( () => Math.random() - 0.5);
-    console.log('aloha dance', list);
+    console.log('test', test);
+    if(test) this.setState({time: test.time || 20});
     let results: IQuizItemResult[] = [];
     if(list) this.setState({list},() => {
       this.state.list.map((item, index) => {
@@ -119,7 +123,6 @@ class Quiz extends React.Component<QuizTypes.IProps, QuizTypes.IState> {
         };
         results.push(newObject);
       })
-      console.log('results', results);
       this.props.setResults && this.props.setResults(results);
     });
   }
@@ -136,7 +139,6 @@ class Quiz extends React.Component<QuizTypes.IProps, QuizTypes.IState> {
     if(showResult) {
       document.body.style.overflow = 'unset';
     }
-    console.log('bachate', this.props);
     return (
       <div className={`quiz`}>
         {showResult ? (
@@ -228,13 +230,13 @@ class Quiz extends React.Component<QuizTypes.IProps, QuizTypes.IState> {
                     </div>
                   </div>
                   <div className="quiz__card">
-                    {console.log('suka blyat', this.props.newResults)}
                     {stepper < length  && this.props.newResults && this.props.newResults.map((item, i) =>
                       <div key={i} className={`quiz__item ${i === stepper ? 'quiz__item--current' : ''}`}>
                         <Card
                           id={item.id}
                           question={item.question}
                           answers={[...item.answersWithResult]}
+                          isFavorite={item.isFavorite || false}
                           onCardNextButtonClick={this.handleChildNextButtonClick}
                           isTheLast={i === length - 1}
                           isTheFirst={i === 0}
@@ -243,7 +245,7 @@ class Quiz extends React.Component<QuizTypes.IProps, QuizTypes.IState> {
                   </div>
                   <div className="quiz__countdown-timer">
                     <CountdownTimer
-                      value={500}
+                      value={this.getTime()}
                       timeEnd={this.handleTimerEnding}/>
                   </div>
                 </div>

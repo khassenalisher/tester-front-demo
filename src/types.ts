@@ -34,6 +34,7 @@ export namespace QuizTypes {
     isEndButtonPressed: boolean;
     cntAllAnsweredQuestions: number;
     windowWidth: number;
+    time: number,
   }
 }
 
@@ -61,6 +62,7 @@ export interface ITest {
   passedDate?: string;
   resultInNumber?: number;
   resultInPercent?: number;
+  time?: number;
 }
 
 export namespace AppTypes {
