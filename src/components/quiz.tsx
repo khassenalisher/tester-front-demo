@@ -11,6 +11,8 @@ import { tests } from '../mock';
 import { bindActionCreators } from 'redux';
 import setResultsAction from '../store/questionsResults/actions';
 // import {browserHistory} from 'react-router';
+import { Route, Redirect } from "react-router-dom";
+
 
 class Quiz extends React.Component<QuizTypes.IProps, QuizTypes.IState> {
   constructor(props: QuizTypes.IProps) {
@@ -133,10 +135,14 @@ class Quiz extends React.Component<QuizTypes.IProps, QuizTypes.IState> {
     window.removeEventListener('beforeunload', this.onUnload);
   }
 
-  onUnload() {
-    // browserHistory.push('/tester-front-demo/');
-    this.props.history.push('/tester-front-demo/');
-  }
+  onUnload = () => (
+    <Redirect
+      to={{
+        pathname: "/tester-front-demo/"
+      }}
+    />)
+
+
   render():React.ReactElement {
     const { stepper, isTimeEnd, rightAnswers, windowWidth } = this.state;
     const { length } = this.state.list;
