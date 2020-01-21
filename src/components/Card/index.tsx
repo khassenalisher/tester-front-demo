@@ -96,13 +96,13 @@ class Card extends React.Component<CardTypes.IProps, CardTypes.IState> {
   componentWillUnmount() {
   }
   render(): React.ReactElement {
-    const { question, id, isTheLast, isTheFirst, answers } = this.props;
+    const { question, id, isTheLast, isTheFirst, answers, index } = this.props;
     const { result } = this.state;
     return (
       <div className="card">
         <div className="card__content">
           <div className="card__head-wrapper">
-            <h3 className="card__title card__title--number">#{id+1}</h3>
+            <h3 className="card__title card__title--number">#{index+1}</h3>
             <div className="card__favorites">
               <button
                 className="card__favorites-button"

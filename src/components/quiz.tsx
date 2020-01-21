@@ -234,6 +234,7 @@ class Quiz extends React.Component<QuizTypes.IProps, QuizTypes.IState> {
                       <div key={i} className={`quiz__item ${i === stepper ? 'quiz__item--current' : ''}`}>
                         <Card
                           id={item.id}
+                          index={i}
                           question={item.question}
                           answers={[...item.answersWithResult]}
                           isFavorite={item.isFavorite || false}

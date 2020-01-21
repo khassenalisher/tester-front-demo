@@ -3,6 +3,7 @@ import { IAnswer, IQuizItemResult, IResult } from '../../types';
 export namespace CardTypes {
   export interface IProps {
     id: number;
+    index: number;
     question: string;
     answers: IResult[];
     onCardNextButtonClick?(direction: string) : any;
