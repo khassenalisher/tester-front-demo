@@ -1,5 +1,5 @@
 import React from 'react';
-import CompanyLogo from '../../static/img/company-logo.svg';
+import CompanyLogo from '../../static/img/company-logo.png';
 import { HeaderTypes } from './types';
 import './index.css';
 
