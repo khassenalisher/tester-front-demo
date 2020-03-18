@@ -15,7 +15,7 @@ function Header(props: HeaderTypes.IProps) {
               src={CompanyLogo}
             />
           </div>
-          <h3 className="company-data__title">Комитет индустриального развития и промышленной безопасности </h3>
+          <h3 className="company-data__title">Квалификационное тестирование</h3>
         </div>
         {props.isUserAuth && (
           <div className="header__user-data">
