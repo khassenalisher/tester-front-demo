@@ -18,7 +18,7 @@ function PassedTestCard(props: PassedTestCardTypes.IProps) {
             className="passed-test-card__link"
             to={`/tester-front-demo/test/${props.id}`}
           >
-            Перепройти тестирование
+            Заново пройти
             <img alt='arrow' className="passed-test-card__arrow" src={ArrowImage} />
           </Link>
         </div>
